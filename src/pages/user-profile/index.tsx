@@ -1,18 +1,22 @@
+import { IssuesCardsList } from "../../components/issues-cards-list";
 import { UserProfileCard } from "@/components/user-profile-card";
 import { useUserProfileQuery } from "@/hooks/use-user-profile-query.ts";
 
 export function UserProfilePage() {
-	const query = useUserProfileQuery();
+	const userQuery = useUserProfileQuery();
 
-	if (query.isLoading) {
+	if (userQuery.isLoading) {
 		return <div>Loading...</div>;
 	}
 
-	if (query.isError) {
+	if (userQuery.isError) {
 		throw new Error("Failed to fetch post details");
 	}
 
-	const data = query.data!;
+	const data = userQuery.data!;
 
-	return <UserProfileCard user={data} />;
+	return (<div>
+		<UserProfileCard user={data} />
+		<IssuesCardsList />
+	</div>)
 }

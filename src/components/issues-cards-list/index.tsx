@@ -2,32 +2,30 @@ import { Input } from "@/components/input";
 import { IssueCard } from "@/components/issue-card";
 import { useRepoIssuesQuery } from "@/hooks/use-repo-issues-query";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { type SubmitHandler, useForm } from "react-hook-form";
 
-interface IssuesSearchPageQueryParams
-	extends Record<"userName" | "repoName", string> {}
+interface IssueCardsListFormType {
+	query: string;
+}
 
-export function RepoIssuesSearchPage() {
-	const params = useParams<IssuesSearchPageQueryParams>();
+export function IssuesCardsList() {
+	const form = useForm<IssueCardsListFormType>();
 	const [queryText, setQueryText] = useState("");
 	const query = useRepoIssuesQuery({
-		...params,
 		text: queryText,
 	});
 
+	const onSubmit: SubmitHandler<IssueCardsListFormType> = (data) => {
+		setQueryText(data.query);
+	}
+
 	return (
 		<div>
-			<h1>Search Page</h1>
-			<form>
-				<Input
-					onChange={(e) => {
-						setQueryText(e.target.value);
-					}}
-					value={queryText}
-				/>
+			<form onSubmit={form.handleSubmit(onSubmit)}>
+				<Input {...form.register("query")}/>
 			</form>
 			{query.data && (
-				<div>
+				<div className="flex flex-wrap">
 					{query.data.items.map((issue) => (
 						<IssueCard key={issue.id} {...issue} />
 					))}
