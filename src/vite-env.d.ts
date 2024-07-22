@@ -3,4 +3,6 @@
 interface ImportMetaEnv {
 	VITE_API_URL: string;
 	VITE_API_KEY: string;
+	VITE_USER_NAME: string;
+	VITE_BLOG_REPO_NAME: string;
 }

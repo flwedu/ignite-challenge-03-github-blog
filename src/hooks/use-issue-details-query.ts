@@ -1,4 +1,5 @@
 import { fetchIssueDetails } from "@/api/routes/fetch-issue-details";
+import { useEnvVars } from "@/hooks/use-env-vars.ts";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
@@ -6,17 +7,14 @@ interface IssueDetailsQueryParams
 	extends Record<"userName" | "repoName" | "id", string> {}
 
 export function useIssueDetailsQuery() {
-	const { id, repoName, userName } = useParams<IssueDetailsQueryParams>();
+	const { id } = useParams<IssueDetailsQueryParams>();
+	const { userName, repoName } = useEnvVars();
 
 	return useQuery({
-		queryKey: ["postDetails", userName, repoName, id],
+		queryKey: ["postDetails", id],
 		queryFn: async () => {
-			if (!userName || !repoName || !id) {
-				throw new Error("Missing required parameters");
-			}
-
 			return await fetchIssueDetails({
-				id: Number.parseInt(id),
+				id: Number.parseInt(id ?? "0"),
 				userName,
 				repoName,
 			});

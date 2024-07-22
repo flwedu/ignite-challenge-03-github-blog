@@ -1,24 +1,17 @@
 import { fetchIssues } from "@/api/routes/fetch-issues";
+import { useEnvVars } from "@/hooks/use-env-vars.ts";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
 
 interface UseRepoIssuesProps {
 	text?: string;
 }
 
-interface RepoIssuesQueryParams
-	extends Record<"userName" | "repoName", string> {}
-
 export function useRepoIssuesQuery({ text = "" }: UseRepoIssuesProps) {
-	const { userName, repoName } = useParams<RepoIssuesQueryParams>();
+	const { userName, repoName } = useEnvVars();
 
 	return useQuery({
-		queryKey: ["issues", userName, repoName, text],
+		queryKey: ["issues", text],
 		queryFn: async () => {
-			if (!userName || !repoName) {
-				throw new Error("Missing required parameters");
-			}
-
 			return await fetchIssues({
 				userName,
 				repoName,

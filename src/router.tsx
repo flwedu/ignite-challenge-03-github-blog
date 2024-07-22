@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import { IssueDetailsPage } from "./pages/issue-details";
-import { RepoIssuesSearchPage } from "./pages/repo-issues-search-page";
 import { UserProfilePage } from "./pages/user-profile";
 
 export const router: ReturnType<typeof createBrowserRouter> =
@@ -11,15 +10,11 @@ export const router: ReturnType<typeof createBrowserRouter> =
 			element: <App />,
 			children: [
 				{
-					path: "/:userName",
+					path: "/",
 					element: <UserProfilePage />,
 				},
 				{
-					path: "/:userName/:repoName",
-					element: <RepoIssuesSearchPage />,
-				},
-				{
-					path: "/:userName/:repoName/:id",
+					path: "/:id",
 					element: <IssueDetailsPage />,
 				},
 			],

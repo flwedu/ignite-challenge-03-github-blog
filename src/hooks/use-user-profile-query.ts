@@ -1,16 +1,13 @@
 import { fetchUser } from "@/api/routes/fetch-user.ts";
+import { useEnvVars } from "@/hooks/use-env-vars.ts";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-
-interface UserProfileQueryParams extends Record<"userName", string> {}
 
 export function useUserProfileQuery() {
-	const { userName } = useParams<UserProfileQueryParams>();
+	const { userName } = useEnvVars();
 
 	return useQuery({
-		queryKey: ["user", userName],
+		queryKey: ["user"],
 		queryFn: async () => {
-			if(!userName) throw new Error("Missing required parameters: userName");
 			return await fetchUser(userName);
 		},
 	});
