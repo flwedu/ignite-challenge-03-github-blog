@@ -14,9 +14,7 @@ export async function fetchIssues(params: FetchIssuesParams) {
 			"/search/issues",
 			{
 				params: {
-					q: encodeURIComponent(
-						`${params.text} repo:${params.userName}/${params.repoName}`,
-					),
+					q: `${params.text} repo:${params.userName}/${params.repoName}`,
 				},
 			},
 		)
