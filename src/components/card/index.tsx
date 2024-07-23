@@ -10,7 +10,7 @@ export function Card({
 		<div
 			{...props}
 			className={cn(
-				"grid grid-rows-2 border border-app-color-base-border rounded-sm shadow-sm bg-app-color-base-post hover:border-app-color-base-label",
+				"border border-app-color-base-border rounded-sm shadow-sm bg-app-color-base-post hover:border-app-color-base-label",
 				className,
 			)}
 		>

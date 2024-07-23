@@ -18,9 +18,11 @@ export default {
         "app-color-base-profile": "#0B1B2B",
         "app-color-base-background": "#071422",
         "app-color-base-input": "#040F1A",
-      }
+      },
+      spacing: {
+        'card-height': '260px',
+      },
     },
   },
   plugins: [],
 }
-

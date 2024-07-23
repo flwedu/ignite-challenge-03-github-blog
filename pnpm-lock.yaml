@@ -17,6 +17,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      date-fns:
+        specifier: ^3.6.0
+        version: 3.6.0
       lucide-react:
         specifier: ^0.412.0
         version: 0.412.0(react@18.3.1)
@@ -820,6 +823,9 @@ packages:
 
   cz-emoji-conventional@1.0.2:
     resolution: {integrity: sha512-wWVpU8yIzE8WuzOl8JFHx5IdIn/zVWSHMU991ujDtcPVnX6+d6orQGwwRF4XhgMdWpPpZ0He4TWBG+7JD5fMyQ==}
+
+  date-fns@3.6.0:
+    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
 
   debug@4.3.5:
     resolution: {integrity: sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==}
@@ -2595,6 +2601,8 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
       - typescript
+
+  date-fns@3.6.0: {}
 
   debug@4.3.5:
     dependencies:
