@@ -15,7 +15,7 @@ export async function fetchIssueDetails({
 }: FetchIssueDetailsParams) {
 	return (
 		await apiClient.get<unknown, AxiosResponse<IssueItem>>(
-			`/repos/${userName}}/${repoName}/issues/${id}`,
+			`/repos/${userName}/${repoName}/issues/${id}`,
 		)
 	).data;
 }

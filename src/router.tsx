@@ -14,7 +14,7 @@ export const router: ReturnType<typeof createBrowserRouter> =
 					element: <UserProfilePage />,
 				},
 				{
-					path: "/:id",
+					path: "issues/:id",
 					element: <IssueDetailsPage />,
 				},
 			],

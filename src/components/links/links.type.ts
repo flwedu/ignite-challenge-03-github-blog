@@ -9,5 +9,5 @@ export interface Link {
 		| "twitter"
 		| "createdAt"
 		| "commentsCount";
-	content: string;
+	content: string | number;
 }
